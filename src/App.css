@@ -1,0 +1,418 @@
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 100dvh;
+  padding: clamp(0.5rem, 1.5vh, 1rem);
+}
+
+.site-grid {
+  display: grid;
+  width: min(880px, 100%);
+  height: min(580px, calc(100dvh - 1rem));
+  max-height: calc(100dvh - 1rem);
+  gap: 10px;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr) minmax(0, 1.1fr) minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1.05fr) minmax(0, 0.92fr) minmax(0, 0.92fr);
+  grid-template-areas:
+    "profile about about edu"
+    "links   location location location"
+    "notes   notes mc mc";
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.85rem 1rem;
+  min-height: 0;
+  overflow: hidden;
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.card:hover {
+  background: var(--card-hover);
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.32);
+}
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.45rem;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.section-label__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+.section-label__icon {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+/* Profile */
+.profile-card {
+  grid-area: profile;
+  padding: 0.5rem;
+  display: flex;
+}
+
+.profile-card__inner {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: calc(var(--radius) - 4px);
+  overflow: hidden;
+  min-height: 0;
+}
+
+.profile-card__inner--placeholder,
+.profile-card__inner--framed {
+  background: linear-gradient(145deg, #0d2818 0%, #0b0f14 55%, #0f172a 100%);
+}
+
+.profile-card__inner--full-image {
+  background: transparent;
+}
+
+.profile-card__letter {
+  font-size: clamp(2.5rem, 8vh, 4rem);
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+  user-select: none;
+}
+
+.profile-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-card__inner--framed .profile-card__img {
+  width: 88%;
+  height: 88%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* About */
+.about-card {
+  grid-area: about;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-card__name {
+  font-size: clamp(1.35rem, 3.5vh, 1.85rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.35rem;
+}
+
+.about-card__tagline {
+  color: var(--muted);
+  font-size: clamp(0.8rem, 1.6vh, 0.88rem);
+  line-height: 1.4;
+  margin-bottom: 0.55rem;
+}
+
+.about-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.tag-pill {
+  font-size: 0.65rem;
+  font-weight: 500;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  background: var(--accent-dim);
+  color: var(--accent);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+/* Education */
+.education-card {
+  grid-area: edu;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.education-card__title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.15rem;
+}
+
+.education-card__subtitle {
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
+/* Links — narrow column, content centered */
+.links-card {
+  grid-area: links;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.75rem 0.85rem;
+}
+
+.links-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.55rem;
+}
+
+.links-list__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1.3;
+  transition: opacity 0.2s ease;
+}
+
+.links-list__item:hover {
+  opacity: 0.85;
+}
+
+.links-list__icon {
+  flex-shrink: 0;
+}
+
+/* Location — wide strip */
+.location-card {
+  grid-area: location;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1.25rem;
+}
+
+.location-card__place,
+.location-card__time {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.84rem;
+}
+
+.location-card__icon {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.location-card__time {
+  flex-shrink: 0;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--border);
+}
+
+.location-card__time time {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Notes */
+.notes-card {
+  grid-area: notes;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.notes-card__text {
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+/* Minecraft — half width, stacked copy */
+.minecraft-card {
+  grid-area: mc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.minecraft-card__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  flex: 1;
+  text-align: center;
+}
+
+.minecraft-card__address {
+  font-family: var(--mono);
+  font-size: clamp(0.82rem, 1.8vh, 0.95rem);
+  font-weight: 500;
+  color: var(--text);
+  word-break: break-all;
+}
+
+.copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.32rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--muted);
+  font-size: 0.75rem;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.copy-btn:hover {
+  color: var(--text);
+  border-color: var(--border-hover);
+  background: var(--accent-dim);
+}
+
+/* Entrance animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.site-grid > * {
+  animation: fadeUp 0.5s ease backwards;
+}
+
+.site-grid > *:nth-child(1) {
+  animation-delay: 0.04s;
+}
+.site-grid > *:nth-child(2) {
+  animation-delay: 0.08s;
+}
+.site-grid > *:nth-child(3) {
+  animation-delay: 0.12s;
+}
+.site-grid > *:nth-child(4) {
+  animation-delay: 0.16s;
+}
+.site-grid > *:nth-child(5) {
+  animation-delay: 0.2s;
+}
+.site-grid > *:nth-child(6) {
+  animation-delay: 0.24s;
+}
+.site-grid > *:nth-child(7) {
+  animation-delay: 0.28s;
+}
+
+/* Tablet */
+@media (max-width: 720px) {
+  .location-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .page {
+    align-items: flex-start;
+    height: auto;
+    min-height: 100dvh;
+    padding: 1rem;
+  }
+
+  .site-grid {
+    height: auto;
+    max-height: none;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "profile about"
+      "edu     edu"
+      "links   links"
+      "location location"
+      "notes   notes"
+      "mc      mc";
+  }
+
+  .links-card {
+    padding: 1rem 1.15rem;
+  }
+
+  .minecraft-card__body {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .profile-card__inner {
+    min-height: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "profile"
+      "about"
+      "edu"
+      "links"
+      "location"
+      "notes"
+      "mc";
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .site-grid > * {
+    animation: none;
+    transition: none;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+}
