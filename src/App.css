@@ -17,7 +17,7 @@
   grid-template-rows: minmax(0, 1.05fr) minmax(0, 0.92fr) minmax(0, 0.92fr);
   grid-template-areas:
     "profile about about links"
-    "edu     location location location"
+    "location edu edu edu"
     "notes   notes mc mc";
 }
 
@@ -213,11 +213,12 @@
 .location-card {
   grid-area: location;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  gap: 1rem;
+  justify-content: center;
+  gap: 0.5rem;
   padding: 0.5rem 1rem;
+  text-align: center;
 }
 
 .location-card__place,

@@ -7,11 +7,11 @@
 }
 
 :root {
-  --bg: #f5f9ff;
-  --card: #eef6ff;
-  --card-hover: #e8f2ff;
-  --border: rgba(91, 163, 208, 0.2);
-  --border-hover: rgba(91, 163, 208, 0.4);
+  --bg: #e8f4ff;
+  --card: #f8fbff;
+  --card-hover: #eef6ff;
+  --border: rgba(91, 163, 208, 0.18);
+  --border-hover: rgba(91, 163, 208, 0.35);
   --text: #1a3a52;
   --muted: #6b8ba8;
   --accent: #5ba3d0;
