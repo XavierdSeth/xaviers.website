@@ -47,6 +47,4 @@ export const site = {
     title: "High School",
     subtitle: "Year 11 — Computer Science & Mathematics",
   },
-
-  interests: ["Web dev", "Minecraft", "Rust", "Lo-fi"],
 };
