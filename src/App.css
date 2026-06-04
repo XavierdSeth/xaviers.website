@@ -16,8 +16,8 @@
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr) minmax(0, 1.1fr) minmax(0, 1fr);
   grid-template-rows: minmax(0, 1.05fr) minmax(0, 0.92fr) minmax(0, 0.92fr);
   grid-template-areas:
-    "profile about about edu"
-    "links   location location location"
+    "profile about about links"
+    "edu     location location location"
     "notes   notes mc mc";
 }
 
@@ -87,7 +87,7 @@
 
 .profile-card__inner--placeholder,
 .profile-card__inner--framed {
-  background: linear-gradient(145deg, #0d2818 0%, #0b0f14 55%, #0f172a 100%);
+  background: linear-gradient(145deg, #a8d5f7 0%, #d4e9ff 55%, #c5e0ff 100%);
 }
 
 .profile-card__inner--full-image {
@@ -215,17 +215,17 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 1rem;
-  padding: 0.75rem 1.25rem;
+  padding: 0.5rem 1rem;
 }
 
 .location-card__place,
 .location-card__time {
   display: flex;
   align-items: center;
-  gap: 0.45rem;
-  font-size: 0.84rem;
+  gap: 0.3rem;
+  font-size: 0.75rem;
 }
 
 .location-card__icon {
@@ -237,7 +237,7 @@
   flex-shrink: 0;
   padding: 0.35rem 0.75rem;
   border-radius: 999px;
-  background: rgba(0, 0, 0, 0.35);
+  background: var(--accent-dim);
   border: 1px solid var(--border);
 }
 

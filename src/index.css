@@ -7,15 +7,15 @@
 }
 
 :root {
-  --bg: #0b0f14;
-  --card: #121820;
-  --card-hover: #161e28;
-  --border: rgba(255, 255, 255, 0.06);
-  --border-hover: rgba(16, 185, 129, 0.35);
-  --text: #f1f5f9;
-  --muted: #94a3b8;
-  --accent: #10b981;
-  --accent-dim: rgba(16, 185, 129, 0.15);
+  --bg: #f5f9ff;
+  --card: #eef6ff;
+  --card-hover: #e8f2ff;
+  --border: rgba(91, 163, 208, 0.2);
+  --border-hover: rgba(91, 163, 208, 0.4);
+  --text: #1a3a52;
+  --muted: #6b8ba8;
+  --accent: #5ba3d0;
+  --accent-dim: rgba(91, 163, 208, 0.12);
   --radius: 14px;
   --font: "Inter", system-ui, -apple-system, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, monospace;

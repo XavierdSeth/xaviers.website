@@ -8,15 +8,6 @@ export function AboutCard() {
       <SectionLabel dot>About me</SectionLabel>
       <h1 className="about-card__name">{site.name}</h1>
       <p className="about-card__tagline">{site.tagline}</p>
-      {site.interests?.length > 0 && (
-        <div className="about-card__tags" aria-label="Interests">
-          {site.interests.map((item) => (
-            <span key={item} className="tag-pill">
-              {item}
-            </span>
-          ))}
-        </div>
-      )}
     </SiteCard>
   );
 }

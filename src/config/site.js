@@ -36,7 +36,7 @@ export const site = {
   },
 
   location: {
-    label: "Australia, WA, Perth",
+    label: "Perth, WA",
     timezone: "Australia/Perth",
   },
 
