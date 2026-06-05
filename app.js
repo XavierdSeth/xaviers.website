@@ -1,7 +1,7 @@
 const CONFIG = {
   serverIP: 'mc.xaviers.website',
   name:     'xavier',
-  note:     'idk what to put here...',
+  note:     'mc server is now permanently up.',
   socials: [
     { id: 'social-github', url: 'https://github.com/XavierdSeth' },
     { id: 'social-discord', url: 'https://discord.gg' },
