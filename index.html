@@ -1,22 +1,107 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Xavier — developer from Perth. Web dev, Minecraft server, and more."
-    />
-    <title>Xavier</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>xavier's corner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── Main site ────────────────────────────────── -->
+  <div class="layout" id="main-view">
+
+    <aside class="sidebar">
+
+      <div class="card card--profile">
+        <div class="profile-avatar">X</div>
+        <div class="profile-info">
+          <h1 class="profile-name">xavier</h1>
+        </div>
+        <div class="socials">
+          <a href="#" class="social-link" id="social-github" title="GitHub">
+            <svg viewBox="0 0 16 16" fill="currentColor">
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link" id="social-discord" title="Discord">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20.445 2.5a19.787 19.787 0 0 0-4.876-1.518.074.074 0 0 0-.079.037c-.211.378-.445.87-.608 1.26a18.27 18.27 0 0 0-5.487 0c-.163-.39-.405-.882-.609-1.26a.077.077 0 0 0-.079-.037A19.735 19.735 0 0 0 3.555 2.5a.07.07 0 0 0-.033.03C.533 7.046-.32 11.5.099 15.85a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.027c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.107 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.193.373-.293a.075.075 0 0 1 .078-.01c3.928 1.793 8.18 1.793 12.062 0a.075.075 0 0 1 .079.009c.12.1.246.199.373.293a.077.077 0 0 1-.006.127c-.598.35-1.222.646-1.873.893a.077.077 0 0 0-.041.107c.359.699.769 1.364 1.226 1.994a.076.076 0 0 0 .084.027 19.86 19.86 0 0 0 5.994-3.03.077.077 0 0 0 .032-.055c.504-4.772-.847-8.92-3.585-12.6a.061.061 0 0 0-.033-.03Zm-12.863 10.135c-1.091 0-1.991-.999-1.991-2.227 0-1.228.889-2.227 1.991-2.227 1.102 0 2.009.999 1.991 2.227 0 1.228-.889 2.227-1.991 2.227Zm8.368 0c-1.091 0-1.991-.999-1.991-2.227 0-1.228.889-2.227 1.991-2.227 1.102 0 2.008.999 1.991 2.227 0 1.228-.889 2.227-1.991 2.227Z"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link" id="social-mail" title="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="card card--server">
+        <div class="card-label">minecraft server</div>
+        <div class="server-ip" id="server-ip-text">mc.xaviers.website</div>
+        <button class="copy-btn" id="copy-btn" onclick="copyIP()">
+          <span id="copy-label">copy ip</span>
+        </button>
+        <div class="server-footer">
+          <div class="server-status">
+            <span class="status-dot" id="status-dot"></span>
+            <span class="status-text" id="status-text">online</span>
+          </div>
+          <span class="player-count" id="player-count">0/100</span>
+        </div>
+      </div>
+
+      <div class="card card--note">
+        <div class="card-label">note</div>
+        <div class="note-body" id="note-body"></div>
+      </div>
+
+    </aside>
+
+    <main class="board">
+      <div class="board-header">
+        <h2 class="board-title">messages</h2>
+        <span class="board-sub">anonymous · say anything</span>
+      </div>
+
+      <div class="post-form">
+        <textarea id="msg-input" class="post-input" placeholder="drop something here..." maxlength="500" rows="3"></textarea>
+        <div class="post-actions">
+          <span class="char-count" id="char-count">500</span>
+          <button class="post-btn" onclick="postMessage()">post it</button>
+        </div>
+      </div>
+
+      <div class="messages" id="messages-list"></div>
+    </main>
+
+  </div>
+
+  <!-- ── Admin panel (hidden, hash-routed) ────────── -->
+  <div class="admin-view" id="admin-view" style="display:none">
+    <div class="admin-card">
+      <div class="admin-title">server status</div>
+      <div class="admin-sub">changes are live immediately for all visitors</div>
+      <div class="admin-options">
+        <button class="admin-btn green" onclick="adminSetStatus('online')">
+          <span class="admin-dot green"></span>online
+        </button>
+        <button class="admin-btn yellow" onclick="adminSetStatus('maintenance')">
+          <span class="admin-dot yellow"></span>maintenance
+        </button>
+        <button class="admin-btn red" onclick="adminSetStatus('offline')">
+          <span class="admin-dot red"></span>offline
+        </button>
+      </div>
+      <div class="admin-current">current: <span id="admin-current-status">loading...</span></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="app.js"></script>
+</body>
 </html>
