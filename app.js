@@ -2,11 +2,11 @@
 const CONFIG = {
   serverIP: 'mc.xaviers.website',
   name:     'xavier',
-  note:     'hey! drop an anonymous message if you want. i read everything :)',
+  note:     'idk what to put here...',
   socials: [
-    { id: 'social-github', url: 'https://github.com/yourusername' },
-    { id: 'social-discord', url: 'https://discord.gg/yourinvite' },
-    { id: 'social-mail', url: 'mailto:you@email.com' },
+    { id: 'social-github', url: 'https://github.com/XavierdSeth' },
+    { id: 'social-discord', url: 'https://discord.gg' },
+    { id: 'social-mail', url: 'mailto:xavierseth27.1@gmail.com' },
   ],
   supabase: {
     url:    'https://holgsmqqwikcmcosssye.supabase.co',
@@ -65,7 +65,7 @@ function applyConfig() {
   document.querySelector('.profile-avatar').textContent = CONFIG.name[0].toUpperCase();
   document.getElementById('server-ip-text').textContent = CONFIG.serverIP;
   document.getElementById('note-body').textContent      = CONFIG.note;
-  document.title = `${CONFIG.name}'s corner`;
+  document.title = `${CONFIG.name}s.website`;
   CONFIG.socials.forEach(s => {
     const link = document.getElementById(s.id);
     if (link) link.href = s.url;
@@ -246,7 +246,7 @@ async function toggleLike(id) {
 function renderFull() {
   const list = document.getElementById('messages-list');
   if (!messages.length) {
-    list.innerHTML = `<div class="empty-state"><div class="empty-glyph">∅</div><p>no messages yet.<br>be the first.</p></div>`;
+    list.innerHTML = `<div class="empty-state"><div class="empty-glyph">✡</div><p>no messages yet.<br>this wont last long.</p></div>`;
     return;
   }
   list.innerHTML = messages.map(m => buildMsgHTML(m, false)).join('');
