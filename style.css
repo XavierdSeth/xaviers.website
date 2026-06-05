@@ -1,4 +1,3 @@
-/* ── Variables ─────────────────────────────────────── */
 :root {
   --bg:        #e8f0f7;
   --bg2:       #dce7f2;
@@ -19,7 +18,6 @@
   --radius-lg: 16px;
 }
 
-/* ── Reset ─────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html, body {
@@ -30,14 +28,12 @@ html, body {
   font-family: var(--sans);
 }
 
-/* ── Layout ────────────────────────────────────────── */
 .layout {
   display: grid;
   grid-template-columns: 280px 1fr;
   height: 100vh;
 }
 
-/* ── Sidebar ───────────────────────────────────────── */
 .sidebar {
   background: var(--bg2);
   border-right: 1px solid var(--border);
@@ -48,7 +44,6 @@ html, body {
   overflow: hidden;
 }
 
-/* ── Cards ─────────────────────────────────────────── */
 .card {
   background: var(--bg);
   border: 1px solid var(--border);
@@ -71,7 +66,6 @@ html, body {
   margin-bottom: 10px;
 }
 
-/* ── Profile card ──────────────────────────────────── */
 .card--profile {
   display: flex;
   align-items: center;
@@ -124,7 +118,6 @@ html, body {
 
 .social-link:hover { border-color: var(--accent); color: var(--accent); }
 
-/* ── Server card ───────────────────────────────────── */
 .server-ip {
   font-family: var(--mono);
   font-size: 14px;
@@ -191,7 +184,6 @@ html, body {
   color: var(--dim);
 }
 
-/* ── Status colour picker ──────────────────────────── */
 .status-picker {
   display: flex;
   gap: 5px;

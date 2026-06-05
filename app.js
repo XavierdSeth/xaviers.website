@@ -1,4 +1,3 @@
-/* ── Config ────────────────────────────────────────── */
 const CONFIG = {
   serverIP: 'mc.xaviers.website',
   name:     'xavier',
@@ -15,12 +14,10 @@ const CONFIG = {
   adminHash: '#/admin',
 };
 
-/* ── State ─────────────────────────────────────────── */
 let sb;
 let messages = [];
 const liked = new Set(JSON.parse(localStorage.getItem('xv_liked') || '[]'));
  
-/* ── Router ────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
   const hash = window.location.hash;
   if (hash === CONFIG.adminHash) {
@@ -35,7 +32,6 @@ window.addEventListener('hashchange', () => {
   else showMainSite();
 });
  
-/* ── Main site boot ────────────────────────────────── */
 async function showMainSite() {
   document.getElementById('main-view').style.display = '';
   document.getElementById('admin-view').style.display = 'none';
@@ -48,9 +44,9 @@ async function showMainSite() {
   await loadMessages();
   subscribeToMessages();
   fetchPlayerCount();
+  setInterval(fetchPlayerCount, 10000);
 }
  
-/* ── Admin panel boot ──────────────────────────────── */
 async function showAdminPanel() {
   document.getElementById('main-view').style.display = 'none';
   document.getElementById('admin-view').style.display = '';
@@ -59,7 +55,6 @@ async function showAdminPanel() {
   await loadAdminStatus();
 }
  
-/* ── Config ────────────────────────────────────────── */
 function applyConfig() {
   document.querySelector('.profile-name').textContent   = CONFIG.name;
   document.querySelector('.profile-avatar').textContent = CONFIG.name[0].toUpperCase();
@@ -72,7 +67,6 @@ function applyConfig() {
   });
 }
  
-/* ── Copy IP ───────────────────────────────────────── */
 function copyIP() {
   const btn = document.getElementById('copy-btn');
   const lbl = document.getElementById('copy-label');
@@ -83,7 +77,6 @@ function copyIP() {
   });
 }
  
-/* ── Status (Supabase) ─────────────────────────────── */
 const STATUS_MAP = {
   online:      { dot: 'green',  label: 'online' },
   maintenance: { dot: 'yellow', label: 'maintenance' },
@@ -108,8 +101,7 @@ function applyStatusDisplay(status) {
   document.getElementById('status-dot').className = 'status-dot ' + s.dot;
   document.getElementById('status-text').textContent = s.label;
 }
- 
-/* ── Admin: load + set status ──────────────────────── */
+
 async function loadAdminStatus() {
   const { data } = await sb.from('site_status').select('value').eq('key', 'server_status').single();
   const current = data?.value || 'online';
@@ -131,23 +123,21 @@ function highlightAdminBtn(status) {
   });
 }
  
-/* ── Player count ──────────────────────────────────── */
 async function fetchPlayerCount() {
   try {
-    const res = await fetch(`https://api.mcstatus.io/v1/server/java/${encodeURIComponent(CONFIG.serverIP)}`);
+    const res = await fetch(`https://api.mcstatus.io/v2/status/java/${encodeURIComponent(CONFIG.serverIP)}`);
     const data = await res.json();
     const el = document.getElementById('player-count');
-    if (data.online && data.players) {
+    if (data.players) {
       el.textContent = `${data.players.online}/${data.players.max} online`;
     } else {
-      el.textContent = '0/100';
+      el.textContent = '0/100 online';
     }
   } catch {
-    document.getElementById('player-count').textContent = '0/100';
+    document.getElementById('player-count').textContent = '0/100 online';
   }
 }
  
-/* ── Char counter ──────────────────────────────────── */
 function setupCharCount() {
   const input = document.getElementById('msg-input');
   const counter = document.getElementById('char-count');
@@ -157,8 +147,7 @@ function setupCharCount() {
     counter.classList.toggle('low', left < 50);
   });
 }
- 
-/* ── Load messages ─────────────────────────────────── */
+
 async function loadMessages() {
   const { data, error } = await sb
     .from('messages').select('*')
@@ -168,7 +157,6 @@ async function loadMessages() {
   renderFull();
 }
  
-/* ── Real-time messages ────────────────────────────── */
 function subscribeToMessages() {
   sb.channel('messages-live')
     .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'messages' }, payload => {
@@ -183,8 +171,7 @@ function subscribeToMessages() {
     })
     .subscribe();
 }
- 
-/* ── Post ──────────────────────────────────────────── */
+
 async function postMessage() {
   const input = document.getElementById('msg-input');
   const text  = input.value.trim();
@@ -220,7 +207,6 @@ async function postMessage() {
   if (tempEl) { tempEl.id = 'msg-' + data.id; tempEl.classList.remove('msg--pending'); }
 }
  
-/* ── Like ──────────────────────────────────────────── */
 async function toggleLike(id) {
   const msg = messages.find(m => m.id === id);
   if (!msg || String(id).startsWith('temp-')) return;
@@ -242,7 +228,6 @@ async function toggleLike(id) {
   }
 }
  
-/* ── DOM helpers ───────────────────────────────────── */
 function renderFull() {
   const list = document.getElementById('messages-list');
   if (!messages.length) {
@@ -290,7 +275,6 @@ function escapeHTML(str) {
   return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
  
-/* ── Enter to post ─────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
   const input = document.getElementById('msg-input');
   if (input) input.addEventListener('keydown', e => {
